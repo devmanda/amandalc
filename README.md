@@ -1,46 +1,43 @@
-# Astro Starter Kit: Basics
+# alc-personal-site
 
-```sh
-npm create astro@latest -- --template basics
-```
+Personal site and portfolio for **Amanda Christianson**, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+| Piece      | Role                                      |
+| ---------- | ----------------------------------------- |
+| Astro 5    | Static site framework                     |
+| Tailwind 3 | Styling (`tailwind.config.cjs`)           |
+| PostCSS    | CSS pipeline                              |
 
-Inside of your Astro project, you'll see the following folders and files:
+Custom headline/body fonts (**Aventine**, **Venus**) load via `@font-face` in `src/styles.css`; add `.woff2` files under `public/fonts/` or rely on locally installed fonts.
+
+## Scripts
+
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm install`     | Install dependencies                |
+| `npm run dev`     | Dev server (default `localhost:4321`) |
+| `npm run build`   | Production build → `dist/`          |
+| `npm run preview` | Preview the production build locally |
+
+## Project layout
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/     # Welcome, SitePage, SiteChrome, SiteDirectoryNav, SiteColophon
+├── layouts/        # Layout.astro (document shell, meta, global CSS link)
+├── pages/          # Routes (index, about, contact, musings/, case-studies/)
+└── styles.css      # Fonts, Tailwind layers, base styles
+
+public/
+├── favicon.png
+└── fonts/          # Optional self-hosted font files
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Development
 
-## 🧞 Commands
+1. Clone the repo and run `npm install`.
+2. Run `npm run dev` and open the URL shown in the terminal.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Static output is emitted to `dist/` after `npm run build`, suitable for any static host (GitHub Pages, Netlify, Cloudflare Pages, etc.).
