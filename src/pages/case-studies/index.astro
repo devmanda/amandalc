@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SitePage from '../../components/SitePage.astro';
+---
+
+<Layout
+	title="Case Studies"
+	description="Case studies and deep dives from Amanda Christianson’s work."
+>
+	<SitePage
+		title="Case Studies"
+		lede="Structured write-ups of problems, constraints, and what shipped—when you’re ready to tell those stories."
+	>
+		<div class="font-body text-base leading-relaxed text-ink-muted">
+			<p>
+				This index will hold summaries that link out to full case studies (or long on-page narratives), similar
+				to how <a href="/musings" class="text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink">Musings</a> will list articles.
+			</p>
+			<ul class="mt-10 list-none space-y-8 p-0" aria-label="Case studies">
+				<li class="border-b border-ink/10 pb-8 last:border-b-0">
+					<h2 class="font-headline text-[clamp(1.35rem,3vw,2.25rem)] font-normal tracking-[-0.01em] text-ink">
+						Placeholder study
+					</h2>
+					<p class="mt-2">Replace with a real project title, one-line outcome, and link.</p>
+				</li>
+			</ul>
+		</div>
+	</SitePage>
+</Layout>

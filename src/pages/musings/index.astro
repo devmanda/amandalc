@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SitePage from '../../components/SitePage.astro';
+---
+
+<Layout
+	title="Musings"
+	description="Articles and notes by Amanda Christianson — product, systems, and the web."
+>
+	<SitePage
+		title="Musings"
+		lede="Longer writing: what I’m thinking about in product, engineering, and the craft of building for people."
+	>
+		<div class="font-body text-ink-muted">
+			<p class="text-base leading-relaxed">
+				Individual posts will live at paths like <span class="text-ink">/musings/your-post-slug</span> once
+				you wire up Markdown or a CMS. For now, this index is ready for a list of articles.
+			</p>
+
+			<hr class="my-10 border-ink/10" />
+
+			<h2 class="font-headline text-[clamp(1.75rem,4.5vw,3.5rem)] font-normal tracking-[-0.02em] text-ink">
+				Articles
+			</h2>
+			<ul class="mt-6 list-none space-y-6 p-0" aria-label="Blog posts">
+				<li class="border-b border-ink/10 pb-6 last:border-b-0">
+					<p class="text-sm uppercase tracking-[0.18em] text-ink-faint">
+						Coming soon
+					</p>
+					<p class="mt-2 text-base leading-relaxed text-ink-muted">
+						Add your first post as a Markdown file or collection entry—this row will become a linked title and
+						date.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</SitePage>
+</Layout>

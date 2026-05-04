@@ -1,0 +1,110 @@
+---
+/**
+ * Sectioned directory nav with blurbs — pattern from henry.codes (Garden / Meta).
+ */
+const garden = [
+	{
+		href: '/musings',
+		label: 'Musings',
+		comingSoon: true,
+		description: 'Articles, essays, and longer notes on product, systems, and the web.',
+	},
+	{
+		href: '/case-studies',
+		label: 'Case Studies',
+		comingSoon: true,
+		description: 'Long-form write-ups of problems, tradeoffs, and what shipped.',
+	},
+] as const;
+
+const meta = [
+	{
+		href: '/about',
+		label: 'About',
+		description: 'Background, how I work, and what I care about.',
+	},
+	{
+		href: '/contact',
+		label: 'Work with Me',
+		description: 'Collaboration, consulting, and how to get in touch.',
+	},
+] as const;
+
+const linkTitleClass =
+	'font-headline text-[clamp(1.5rem,3.8vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.01em] text-ink decoration-ink/20 underline-offset-[0.45rem] decoration-2 transition-colors group-hover:underline';
+const focus =
+	'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/25 focus-visible:ring-offset-2 focus-visible:ring-offset-parchment';
+---
+
+<nav class="mt-14 border-t border-ink/10 pt-12 md:mt-16" aria-label="Site sections">
+	<div class="grid gap-12 sm:grid-cols-2 sm:gap-10">
+		<div>
+			<h2
+				class="m-0 font-headline text-[clamp(0.8rem,1.5vw,0.95rem)] font-normal uppercase tracking-[0.28em] text-ink-faint"
+			>
+				Meta
+			</h2>
+			<p class="mt-3 max-w-xl font-body text-sm leading-snug text-ink-muted sm:text-base">
+				About the author and the practical bits.
+			</p>
+			<ul class="mt-6 list-none space-y-7 p-0">
+				{
+					meta.map(({ href, label, description }) => (
+						<li>
+							<a href={href} class:list={['group block', focus]}>
+								<span class={linkTitleClass}>{label}</span>
+								<span class="mt-2 block max-w-2xl font-body text-base leading-relaxed text-ink-muted sm:text-lg">
+									{description}
+								</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div>
+			<h2
+				class="m-0 font-headline text-[clamp(0.8rem,1.5vw,0.95rem)] font-normal uppercase tracking-[0.28em] text-ink-faint"
+			>
+				Garden
+			</h2>
+			<p class="mt-3 max-w-xl font-body text-sm leading-snug text-ink-muted sm:text-base">
+				Writing and work worth tending over time.
+			</p>
+			<ul class="mt-6 list-none space-y-7 p-0">
+				{
+					garden.map(({ href, label, description, comingSoon }) => (
+						<li>
+							{
+								comingSoon ? (
+									<div class="block cursor-default">
+										<span class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+											<span class:list={[linkTitleClass, 'text-ink-muted line-through decoration-ink-faint/60']}>
+												{label}
+											</span>
+											<span class="font-body text-xs font-normal uppercase tracking-[0.14em] text-ink-faint sm:text-sm">
+												coming soon!
+											</span>
+										</span>
+										<span class="mt-2 block max-w-2xl font-body text-base leading-relaxed text-ink-muted sm:text-lg">
+											{description}
+										</span>
+									</div>
+								) : (
+									<a href={href} class:list={['group block', focus]}>
+										<span class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+											<span class={linkTitleClass}>{label}</span>
+										</span>
+										<span class="mt-2 block max-w-2xl font-body text-base leading-relaxed text-ink-muted sm:text-lg">
+											{description}
+										</span>
+									</a>
+								)
+							}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</nav>
