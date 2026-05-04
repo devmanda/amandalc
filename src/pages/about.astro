@@ -1,21 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SitePage from '../components/SitePage.astro';
+
+const stackTags = [
+	'E-commerce architecture',
+	'UX strategy',
+	'Technical product leadership',
+	'Platform migration & modernization',
+	'External agency management',
+	'AI-powered tools',
+	'OpenMage / Magento 1',
+	'Magento 2',
+	'Laravel',
+	'PHP',
+	'GitHub',
+	'CI/CD',
+	'JavaScript / TypeScript',
+	'PostgreSQL',
+	'MySQL',
+	'AWS',
+	'Docker',
+	'Figma'
+] as const;
+
+const cardClass =
+	'rounded-lg border border-ink/10 bg-white/70 px-4 py-4 shadow-sm sm:px-[1.125rem] sm:py-4';
+const cardTitleClass = 'm-0 mb-1 font-headline text-[13px] font-medium leading-snug text-ink sm:text-sm';
+const cardBodyClass = 'm-0 font-body text-[13px] leading-relaxed text-ink-muted';
+const pillClass =
+	'inline-block rounded-full border border-ink/10 bg-white/55 px-2.5 py-1 font-body text-xs text-ink-muted';
 ---
 
 <Layout
 	title="About"
-	description="About Amanda Christianson — product, engineering, and systems."
+	description="Bio, how Amanda Christianson works, principles, and core stack — product engineering and e-commerce."
 >
 	<SitePage
 		title="About"
-		lede="A place for bio, principles, and how I like to work—coming together here soon."
 	>
-		<div class="font-body text-base leading-relaxed text-ink-muted">
-			<p>
-				This page is a stub. You’ll be able to expand it with your story, focus areas,
-				and anything you want visitors to know before they dive into musings or case studies.
-			</p>
+		<div class="mx-auto max-w-2xl font-body text-[15px] leading-[1.8] text-ink sm:text-base">
+			<section class="mb-10">
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					Bio
+				</h2>
+				<p class="m-0 mb-4 text-ink last:mb-0">
+					I'm Amanda Christianson — a Sr. Director of Product Engineering with over a decade of experience
+					bridging design thinking and production engineering. I currently lead product and technical work at
+					Farsight Group, LLC, where my primary focus is Classic Firearms, a large-scale e-commerce platform
+					with 50,000+ SKUs. My day-to-day spans everything from PHP and platform architecture to sprint
+					planning, agency partnerships, and code reviews.
+				</p>
+				<p class="m-0 mb-4 text-ink last:mb-0">
+					I started as a front-end developer and have grown into a role that's equal parts engineering lead,
+					product owner, and technical strategist. I'm most at home in the space where complex systems meet
+					real user and business outcomes — whether that's untangling a production incident or scoping a
+					platform migration that will shape the next five years of a business.
+				</p>
+				<p class="m-0 text-ink">
+					Outside of work, I enjoy spending time outdoors watching birds, hiking, backpacking, and kayaking. I'm based in the Charlotte area.
+				</p>
+			</section>
+
+			<hr class="my-10 border-0 border-t border-ink/10" />
+
+			<section class="mb-10">
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					How I work
+				</h2>
+				<p class="m-0 mb-4 text-ink">
+					Whether I'm reviewing a pull request or evaluating a $350K platform migration,
+					I'm always asking: what are the second-order effects? Where are the failure modes? What's the real
+					cost?
+				</p>
+				<p class="m-0 mb-4 text-ink">
+					I write things down. Good decisions get documented. Reasoning gets shared. I believe the best
+					technical leadership creates clarity — for engineers, for agency partners, for stakeholders who
+					don't live in the codebase.
+				</p>
+				<p class="m-0 mb-4 text-ink">
+					I move between layers comfortably. I can write code, review PRs, lead a retro, and present the
+					strategy deck — sometimes in the same day. I don't believe in rigid role boundaries when the work
+					calls for something different.
+				</p>
+				<p class="m-0 text-ink">
+					I'm a collaborator and I care about the people I work with having context, ownership,
+					and room to do good work. Strong teams ship better things.
+				</p>
+			</section>
+
+			<hr class="my-10 border-0 border-t border-ink/10" />
+
+			<section>
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					Stack & expertise
+				</h2>
+				<div class="mt-2 flex flex-wrap gap-2">
+					{stackTags.map((tag) => <span class={pillClass}>{tag}</span>)}
+				</div>
+			</section>
 		</div>
 	</SitePage>
 </Layout>

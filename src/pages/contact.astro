@@ -1,21 +1,156 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SitePage from '../components/SitePage.astro';
+
+const engagements = [
+	{
+		title: 'Platform Audits',
+		body: "A structured assessment of your e-commerce platform — architecture, performance, technical debt, and risk. You'll walk away with a clear picture of where you are and a prioritized roadmap for what to tackle next.",
+	},
+	{
+		title: 'Project-Based Consulting',
+		body: 'Scoped work with a defined outcome: a migration plan, a new integration, a system redesign. I work alongside your team or agency to get something specific shipped well.',
+	},
+] as const;
+
+const goodFits = [
+	'E-commerce brands on Magento / OpenMage evaluating their next platform move',
+	'Retailers dealing with scaling challenges, performance problems, or integration complexity',
+	'Startups that need their first senior engineering leader to establish process and direction',
+	'Teams with a good agency or dev relationship that need someone to own the technical strategy layer',
+	'Companies that want honest assessment over comfortable answers',
+] as const;
+
+const notAFit = [
+	'Pure staff augmentation or body-shop arrangements',
+	'Projects without clear goals or ownership',
+	'Engagements where the decision has already been made and you just need validation',
+] as const;
+
+const cardClass =
+	'rounded-lg border border-ink/10 bg-white/70 px-4 py-4 shadow-sm sm:px-[1.125rem] sm:py-4';
+const cardTitleClass = 'm-0 mb-1 font-headline text-[13px] font-medium leading-snug text-ink sm:text-sm';
+const cardBodyClass = 'm-0 font-body text-[13px] leading-relaxed text-ink-muted';
+
 ---
 
 <Layout
 	title="Work with Me"
-	description="Contact Amanda Christianson for collaborations, consulting, or conversation."
+	description="Availability, how Amanda Christianson can help, good-fit projects, and how to get in touch."
 >
-	<SitePage
-		title="Work with Me"
-		lede="Ways to get in touch, what kinds of work you take on, and what a first conversation might look like."
-	>
-		<div class="space-y-6 font-body text-base leading-relaxed text-ink-muted">
-			<p>
-				This page is a stub. Common additions: a short note on how you prefer to be contacted, a mailto or
-				calendar link, and boundaries around availability.
-			</p>
+	<SitePage title="Work with Me">
+		<div class="mx-auto max-w-2xl font-body text-[15px] leading-[1.8] text-ink sm:text-base">
+			<section class="mb-10">
+				<p
+					class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-50/90 px-2.5 py-1 font-body text-xs font-medium text-emerald-900"
+				>
+					<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600" aria-hidden="true"></span>
+					Selectively available
+				</p>
+				<p class="m-0 mb-4 text-ink">
+					I take on a small number of outside engagements each year — projects where I can do genuinely useful
+					work and where there's a real problem worth solving. I bring deep,
+					hands-on expertise in e-commerce platform engineering and technical product leadership. I work
+					best with teams that aren't just looking for a pair of hands.
+				</p>
+				<p class="m-0 text-ink">
+					If you're building something in the commerce space, inheriting technical debt you don't fully
+					understand yet, or growing fast and need someone who can hold both the engineering and product
+					perspective — let's talk.
+				</p>
+			</section>
+
+			<hr class="my-10 border-0 border-t border-ink/10" />
+
+			<section class="mb-10">
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					How I can help
+				</h2>
+				<div class="mt-2 grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-3">
+					{
+						engagements.map(({ title, body }) => (
+							<div class={cardClass}>
+								<p class={cardTitleClass}>{title}</p>
+								<p class={cardBodyClass}>{body}</p>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<hr class="my-10 border-0 border-t border-ink/10" />
+
+			<section class="mb-10">
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					Good fits
+				</h2>
+				<ul class="m-0 mt-2 list-none space-y-3 p-0">
+					{
+						goodFits.map((item) => (
+							<li
+								class="grid grid-cols-[1.125rem_minmax(0,1fr)] items-start gap-x-3 font-body text-[15px] leading-[1.8] text-ink sm:grid-cols-[1.25rem_minmax(0,1fr)]"
+							>
+								<span
+									class="select-none text-right font-body leading-none text-ink-faint [margin-top:0.35em]"
+									aria-hidden="true"
+								>
+									→
+								</span>
+								<span class="min-w-0">{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="mb-10">
+				<h2
+					class="m-0 mb-3 font-body text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-faint"
+				>
+					Probably not a fit
+				</h2>
+				<ul class="m-0 mt-2 list-none space-y-3 p-0">
+					{
+						notAFit.map((item) => (
+							<li
+								class="grid grid-cols-[1.125rem_minmax(0,1fr)] items-start gap-x-3 font-body text-[15px] leading-[1.8] text-ink-muted sm:grid-cols-[1.25rem_minmax(0,1fr)]"
+							>
+								<span
+									class="select-none text-right font-body leading-none text-ink-faint [margin-top:0.42em] [font-size:11px]"
+									aria-hidden="true"
+								>
+									✕
+								</span>
+								<span class="min-w-0">{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<hr class="my-10 border-0 border-t border-ink/10" />
+
+			<section>
+				<div class="rounded-lg border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8">
+					<p class="m-0 mb-2 font-headline text-base font-medium text-ink sm:text-[1rem]">
+						Let's see if it's a good fit
+					</p>
+					<p class="m-0 mb-4 font-body text-sm leading-relaxed text-ink-muted sm:text-[0.9375rem] sm:leading-[1.7]">
+						Send me a note with a bit about your company, what you're working on, and what kind of help you're
+						looking for.
+					</p>
+					<a
+						class="inline-block font-body text-[15px] font-medium text-ink underline decoration-ink/25 underline-offset-4 transition hover:decoration-ink"
+						href="mailto:hello@amandalc.com"
+					>
+						hello@amandalc.com
+					</a>
+				</div>
+			</section>
 		</div>
 	</SitePage>
 </Layout>
